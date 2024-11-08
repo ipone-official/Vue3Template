@@ -51,11 +51,14 @@ export default {
   font-style: normal;
 }
 #app {
-  font-family: "SukhumvitSet", Helvetica, Arial, sans-serif;
+  font-family: "SukhumvitSet", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.v-card-title {
+  font-family: "SukhumvitSet", sans-serif;
 }
 
 .gradient-toolbar {

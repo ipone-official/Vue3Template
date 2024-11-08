@@ -2,7 +2,7 @@
   "name": "vue3template",
   "version": "0.1.0",
   "private": true,
-"scripts": {
+  "scripts": {
     "serve": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
@@ -11,6 +11,7 @@
     "core-js": "^3.8.3",
     "install": "^0.13.0",
     "npm": "^10.9.0",
+    "pinia": "^2.2.6",
     "sweetalert2": "^11.6.13",
     "vue": "^3.2.13",
     "vue-router": "^4.4.5",

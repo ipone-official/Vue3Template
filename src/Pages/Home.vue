@@ -4,14 +4,40 @@
       <v-col cols="12" md="8" class="text-center">
         <h1 class="welcome-message">สวัสดีชาว ไอพีวัน</h1>
         <p class="description">ยินดีต้อนรับเข้าสู่แอปพลิเคชันของคุณ!</p>
+        <p v-if="isAuthenticated">Welcome, {{ username }}</p>
+    <p v-else>Please log in.</p>
+    <button @click="toggleAuth">{{ isAuthenticated ? 'Logout' : 'Login' }}</button>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { useUserStore } from '../stores/userStore.js';
+import { computed } from 'vue';
+
 export default {
-  name: "PageHome",
+  setup() {
+    const userStore = useUserStore();
+
+    const toggleAuth = () => {
+      if (userStore.isAuthenticated) {
+        userStore.logout();
+      } else {
+        userStore.login('John Doe');
+      }
+    };
+
+    // ใช้ computed เพื่อให้ reactive
+    const username = computed(() => userStore.username);
+    const isAuthenticated = computed(() => userStore.isAuthenticated);
+
+    return {
+      username,
+      isAuthenticated,
+      toggleAuth,
+    };
+  },
 };
 </script>
 

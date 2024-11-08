@@ -5,15 +5,17 @@
       <v-row justify="center" align="center">
         <v-col cols="12" md="4">
           <v-card class="login-card">
+
             <v-card-title class="text-h5">Login to Your Account</v-card-title>
 
             <v-card-text>
-              <!-- Email Field -->
+              <!-- username Field -->
               <v-text-field
-                v-model="email"
-                label="Email"
-                prepend-inner-icon="mdi-email"
-                type="email"
+                v-model="username"
+                label="Username"
+                prepend-inner-icon="mdi-account"
+                type="text"
+                color="primary"
                 outlined
                 dense
                 hide-details
@@ -65,7 +67,7 @@ export default {
   name: "PageLogin",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       rememberMe: false,
     };
@@ -73,7 +75,7 @@ export default {
   methods: {
     login() {
       console.log("Logging in with:", {
-        email: this.email,
+        username: this.username,
         password: this.password,
         rememberMe: this.rememberMe,
       });
@@ -129,10 +131,12 @@ export default {
   font-size: 1.1rem;
   text-transform: uppercase;
   box-shadow: 0px 5px 10px rgba(0, 127, 196, 0.3);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s, text-shadow 0.3s;
 }
 .login-btn:hover {
   background-color: #005f9e;
+  color: white;
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8); /* Added text-shadow for clarity */
   box-shadow: 0px 7px 14px rgba(0, 127, 196, 0.4);
 }
 
@@ -141,14 +145,22 @@ export default {
   margin-top: 15px;
 }
 .forgot-link {
-  color: #007fc4;
+  color: white;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s, text-shadow 0.3s;
 }
 .forgot-link:hover {
-  color: #005f9e;
+  color: #007fc4;
   text-shadow: 0px 2px 5px rgba(0, 127, 196, 0.3);
   text-decoration: underline;
+}
+/* CSS */
+.logo-image {
+  width: 100%; /* ให้รูปภาพขยายเต็มความกว้างของ container ที่อยู่ภายใน */
+  max-width: 320px; /* จำกัดขนาดสูงสุดของรูปภาพ */
+  height: auto; /* ให้ความสูงปรับตามสัดส่วนของความกว้าง */
+  display: block; /* เพื่อให้การจัดเรียงในแนวตั้งทำได้ง่าย */
+  margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
 }
 </style>
