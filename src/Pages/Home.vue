@@ -17,6 +17,7 @@ import { useUserStore } from '../stores/userStore.js';
 import { computed } from 'vue';
 
 export default {
+  name: "HomePage",
   setup() {
     const userStore = useUserStore();
 

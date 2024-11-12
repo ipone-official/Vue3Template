@@ -17,25 +17,16 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
-      // {
-      //   test: /\.(png|jpe?g|gif|svg)$/i, // กำหนดรูปแบบไฟล์ภาพที่ต้องการให้โหลด
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: '[name].[hash].[ext]', // กำหนดชื่อไฟล์หลังจากโหลด
-      //     outputPath: 'assets/images', // กำหนดตำแหน่งการจัดเก็บไฟล์
-      //   }
-      // },
-      // {
-      //   test: /\.(png|jpe?g|gif|svg|ttf|woff|woff2|eot)$/i, // เพิ่มกฎสำหรับไฟล์ฟอนต์
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: '[name].[hash].[ext]',
-      //     outputPath: 'assets/fonts', // กำหนดตำแหน่งการเก็บฟอนต์
-      //   }
-      // }
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/, // รองรับไฟล์ฟอนต์ต่าง ๆ
         type: 'asset/resource',  // จัดการฟอนต์เป็น resource
@@ -45,6 +36,12 @@ module.exports = {
         type: 'asset/resource',
       },
     ]
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+    extensions: ['.js', '.vue'],
   },
   plugins: [
     new HtmlWebpackPlugin({
