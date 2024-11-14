@@ -23,6 +23,7 @@
         prepend-icon="mdi-home-city"
         title="Home"
         value="home"
+         @click="navigateTo('/Home')"
       ></v-list-item>
       <v-list-item
         class="menu-item"
@@ -47,6 +48,13 @@ export default {
     isOpen: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    navigateTo(route) {
+      // เปลี่ยนเส้นทางและปิด drawer
+      this.$router.push(route);
+      // this.$emit('close');
     },
   },
 };

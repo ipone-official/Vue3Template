@@ -5,7 +5,7 @@
       <page-navigation :isOpen="isDrawerOpen" @close="toggleDrawer" />
       <page-toolbar @toggle-drawer="toggleDrawer" />
       <v-main>
-        <page-breadcrumbs :items="breadcrumbItems" />
+        <page-breadcrumbs v-if="hasBreadcrumbs" :items="$route.meta.breadcrumb" />
         <router-view />
       </v-main>
       <page-footer />
@@ -28,12 +28,12 @@ export default {
   data() {
     return {
       isDrawerOpen: true,
-      breadcrumbItems: [
-        { name: "Home", link: "/" },
-        { name: "Dashboard", link: "/dashboard" },
-        { name: "Overview", link: "/dashboard/overview" },
-      ],
     };
+  },
+  computed: {
+    hasBreadcrumbs() {
+      return this.$route.meta.breadcrumb && this.$route.meta.breadcrumb.length > 0;
+    },
   },
   methods: {
     toggleDrawer() {

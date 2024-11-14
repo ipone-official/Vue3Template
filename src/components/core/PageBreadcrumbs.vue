@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "PageBreadcrumb",
+  name: 'PageBreadcrumb',
   props: {
     items: {
       type: Array,
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     formattedItems() {
-      // Format items to include necessary fields for Vuetify breadcrumbs
+      // ฟอร์แมตข้อมูลสำหรับ Vuetify breadcrumbs
       return this.items.map((item) => ({
         text: item.name,
         to: item.link,
