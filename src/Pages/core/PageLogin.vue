@@ -26,9 +26,11 @@
               <!-- Password Field -->
               <v-text-field
                 v-model="password"
+                :type="showPassword ? 'text' : 'password'"
                 label="Password"
                 prepend-inner-icon="mdi-lock"
-                type="password"
+                :append-inner-icon="!showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                @click:append-inner="togglePasswordVisibility"
                 outlined
                 dense
                 hide-details
@@ -70,9 +72,13 @@ export default {
       username: "",
       password: "",
       rememberMe: false,
+      showPassword: false, // ตัวแปรเพื่อควบคุมการแสดงรหัสผ่าน
     };
   },
   methods: {
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+    },
     login() {
       console.log("Logging in with:", {
         username: this.username,
@@ -84,7 +90,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 /* Background gradient for the login container */
 .login-container {
@@ -111,15 +116,14 @@ export default {
 /* Input field styling */
 .input-field {
   margin-bottom: 20px;
+  color: #007fc4 !important;
 }
 .input-field .v-input__control .v-input__slot:focus-within {
   border-color: #007fc4 !important;
   box-shadow: 0 0 0 3px rgba(0, 127, 196, 0.2);
 }
-
-/* Remember me checkbox */
-.remember-me-checkbox .v-input--selection-controls__ripple {
-  color: #007fc4 !important;
+.custom-icon-color .v-icon {
+  color: #007fc4 !important; /* เปลี่ยนเป็นสีฟ้าหรือสีที่คุณต้องการ */
 }
 
 /* Login button styling */
@@ -127,16 +131,15 @@ export default {
   color: white;
   font-weight: bold;
   width: 100%;
-  padding: 12px 0;
   font-size: 1.1rem;
   text-transform: uppercase;
   box-shadow: 0px 5px 10px rgba(0, 127, 196, 0.3);
   transition: background-color 0.3s, box-shadow 0.3s, color 0.3s, text-shadow 0.3s;
 }
 .login-btn:hover {
-  background-color: #005f9e;
+  background-color: #f8c849;
   color: white;
-  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8); /* Added text-shadow for clarity */
+  /* text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8); */
   box-shadow: 0px 7px 14px rgba(0, 127, 196, 0.4);
 }
 
@@ -155,12 +158,12 @@ export default {
   text-shadow: 0px 2px 5px rgba(0, 127, 196, 0.3);
   text-decoration: underline;
 }
-/* CSS */
-.logo-image {
-  width: 100%; /* ให้รูปภาพขยายเต็มความกว้างของ container ที่อยู่ภายใน */
-  max-width: 320px; /* จำกัดขนาดสูงสุดของรูปภาพ */
-  height: auto; /* ให้ความสูงปรับตามสัดส่วนของความกว้าง */
-  display: block; /* เพื่อให้การจัดเรียงในแนวตั้งทำได้ง่าย */
-  margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+.swal-custom-confirm-button {
+  background-color: #007fc4 !important; /* สีพื้นหลังของปุ่ม */
+  color: white !important; /* สีข้อความเป็นสีขาว */
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
+
 </style>

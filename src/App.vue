@@ -57,6 +57,16 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+/*
+.v-icon {
+  color: #007fc4 !important; 
+  }
+*/
+.v-snackbar__content {
+  color: white !important;
+  text-align: center !important; /* จัดข้อความให้อยู่ตรงกลาง */
+}
+
 .v-card-title {
   font-family: "SukhumvitSet", sans-serif;
 }
